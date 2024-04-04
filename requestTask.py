@@ -16,6 +16,6 @@ def request():
       data= response.json()
       print(data)
  except Exception as error:
-    print('Error', error)
+    print('Error', error) 
 
 request()
