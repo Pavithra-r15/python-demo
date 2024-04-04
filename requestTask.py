@@ -6,7 +6,7 @@ def request():
  try:
      try: 
       api = os.environ ['api-key']
-      print("API Key found")
+      print("API Key found", api)
      except:
       api = os.environ("api-key1")
       print("error")
