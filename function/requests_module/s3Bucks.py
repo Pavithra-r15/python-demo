@@ -1,8 +1,14 @@
 import boto3
+import requests
 s3 = boto3.client("s3")  
+url= input("Enter your url: ")
+def scrape_website():
+    response = requests.get(url)
+    data=response.text
+    with open("index.html", 'w', encoding='utf-8') as file:
+            file.write(data)
 
 def static_website(Bucket):
-        
         response = s3.create_bucket(
             Bucket=Bucket,
             CreateBucketConfiguration={
@@ -41,13 +47,13 @@ def static_website(Bucket):
         
         filename = ['index.html']
         for file in filename:
-                data = open(file, "r").read().encode("utf-8")
+                data = open(file, "r", encoding="utf8").read()
                 response = s3.put_object(
                          ACL='public-read',
                          Body=data,
                          Bucket=Bucket,
                          Key="index.html",
                          ContentType='text/html' )
-                #response = s3.upload_file('D:/python/basics/function/requests_module/index.html', Bucket, 'index.html')       
-                print(response)  
+        #response = s3.upload_file('D:/python/basics/function/requests_module/index.html', Bucket, 'index.html')       
+        print(response)  
 #static_website("statc-websit-demo")
