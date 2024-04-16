@@ -1,7 +1,7 @@
-import boto3
+#import boto3
 from utils import list_site, delete_bucket, empty_bucket
 from s3Bucks import static_website, scrape_website
-s3 = boto3.client('s3')
+#s3 = boto3.client('s3')
 
 def host_static_web(Bucket):
     availableBucket = list_site()
@@ -17,4 +17,5 @@ def host_static_web(Bucket):
     scrape_website()
     static_website(Bucket)
     print('all done')
-host_static_web("weather-bucket-site2")
+host_static_web("weather-bucket-hosting")
+#https://www.weather-forecast.com/
